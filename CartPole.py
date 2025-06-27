@@ -8,11 +8,11 @@ state, _ = env.reset()
 
 # Discretization
 NUM_BINS = [24, 24, 24, 24]  # More bins for better accuracy
-obs_space_high = env.observation_space.high
+obs_space_high = env.observation_space.high#modifying permissible limits
 obs_space_low = env.observation_space.low
-obs_space_low[1] = -10
+obs_space_low[1] = -10#cart velocity
 obs_space_high[1] = 10
-obs_space_low[3] = -np.radians(70)
+obs_space_low[3] = -np.radians(70)#pole angular velocity
 obs_space_high[3] = np.radians(70)
 bin_width = (obs_space_high - obs_space_low) / NUM_BINS
 
@@ -93,5 +93,5 @@ while not done:
     time.sleep(0.03)
 
 velocity = np.array(velocity)
-print(f"{velocity.max()} {velocity.min()}")
+print(f"{velocity.max()} {velocity.min()}")#getting cart velocity limits in actual run
 env.close()
